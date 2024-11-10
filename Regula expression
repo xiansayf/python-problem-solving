@@ -24,3 +24,27 @@ html = """
 """
 
 print re.sub("(<!--.*?-->)", "", html) #remove comment
+
+
+import re
+
+html = """11
+a = 1;
+b = input();
+
+if a + b > 0 && a - b < 0:
+    start()
+elif a*b > 10 || a/b < 1:
+    stop()
+print set(list(a)) | set(list(b)) 
+#Note do not change &&& or ||| or & or |
+#Only change those '&&' which have space on both sides.
+#Only change those '|| which have space on both sides.
+"""
+
+html = re.sub(r"(?<= )&&(?= )", "and", html)  # Replace '&&' with 'and' when surrounded by spaces
+html = re.sub(r"(?<= )\|\|(?= )", "or", html)  # Replace '||' with 'or' when surrounded by spaces
+html = re.sub(r"11\n", "", html)
+
+# Print the modified HTML content
+print(html)
